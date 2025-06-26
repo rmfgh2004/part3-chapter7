@@ -7,13 +7,19 @@
         <variable
             name="item"
             type="com.example.chapter3_part7.model.ContentEntity" />
+
+        <variable
+            name="handler"
+            type="com.example.chapter3_part7.MainActivity.Handler" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp">
+        android:paddingVertical="8dp"
+        android:onClick="@{() -> handler.onClickItem(item)}"
+        android:onLongClick="@{() -> handler.onLongClickItem(item, check)}">
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/contentCheckBox"
@@ -23,6 +29,7 @@
             android:text="@{item.content}"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:onCheckedChanged="@{(button, check) -> handler.onCheckItem(item)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
